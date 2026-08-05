@@ -1,0 +1,1696 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Manual de Trading de Oro — Estrategias Profesionales XAU/USD</title>
+  <meta name="description" content="Manual completo de trading de oro (XAU/USD) con 9 estrategias profesionales, gestión de riesgo, checklist y plan de práctica." />
+  <link rel="preconnect" href="https://api.fontshare.com" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800&f[]=satoshi@300,400,500,700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect x='8' y='4' width='16' height='24' rx='2' fill='%23E8AF34'/><rect x='10' y='8' width='12' height='16' rx='1' fill='%23171614'/><text x='16' y='20' font-size='9' text-anchor='middle' fill='%23E8AF34' font-family='sans-serif' font-weight='bold'>Au</text></svg>" />
+</head>
+<body>
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+  <!-- Mobile menu overlay -->
+  <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar" role="navigation" aria-label="Navegación principal">
+    <div class="sidebar-header">
+      <a href="#here" class="logo" aria-label="Inicio">
+        <svg class="logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+          <rect x="6" y="3" width="20" height="26" rx="2.5" stroke="currentColor" stroke-width="2"/>
+          <rect x="9" y="7" width="14" height="18" rx="1" fill="currentColor" opacity="0.15"/>
+          <path d="M13 14v8M16 11v11M19 14v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        <span class="logo-text">CH<span class="logo-accent">XAUUSD</span></span>
+      </a>
+      <button class="sidebar-close" id="sidebarClose" aria-label="Cerrar menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+    </div>
+    <nav class="sidebar-nav" role="list">
+      <a href="#here" class="nav-link" data-section="here"><span class="nav-num">00</span> Inicio</a>
+      <a href="#resumen" class="nav-link" data-section="resumen"><span class="nav-num">01</span> Resumen</a>
+      <a href="#riesgo" class="nav-link" data-section="riesgo"><span class="nav-num">02</span> Gestión de Riesgo</a>
+      <a href="#el-oro" class="nav-link" data-section="el-oro"><span class="nav-num">03</span> El Oro</a>
+
+      <div class="nav-group">
+        <button class="nav-group-header" id="estrategiasToggle" aria-expanded="true">
+          <span class="nav-group-title">Estrategias</span>
+          <svg class="nav-group-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="nav-group-items" id="estrategiasItems">
+          <a href="#estrategia-1" class="nav-link nav-sub" data-section="estrategia-1"><span class="nav-num">01</span> Soporte/Resistencia</a>
+          <a href="#estrategia-2" class="nav-link nav-sub" data-section="estrategia-2"><span class="nav-num">02</span> EMA 13/34</a>
+          <a href="#estrategia-3" class="nav-link nav-sub" data-section="estrategia-3"><span class="nav-num">03</span> RSI Divergencia</a>
+          <a href="#estrategia-4" class="nav-link nav-sub nav-flagship" data-section="estrategia-4"><span class="nav-num">04</span> CRT ★</a>
+          <a href="#estrategia-5" class="nav-link nav-sub" data-section="estrategia-5"><span class="nav-num">05</span> CHoCH + BOS</a>
+          <a href="#estrategia-6" class="nav-link nav-sub" data-section="estrategia-6"><span class="nav-num">06</span> Supply &amp; Demand</a>
+          <a href="#estrategia-7" class="nav-link nav-sub" data-section="estrategia-7"><span class="nav-num">07</span> London Breakout</a>
+          <a href="#estrategia-8" class="nav-link nav-sub" data-section="estrategia-8"><span class="nav-num">08</span> Volume Profile</a>
+          <a href="#estrategia-9" class="nav-link nav-sub" data-section="estrategia-9"><span class="nav-num">09</span> Breakout y Retest</a>
+        </div>
+      </div>
+
+      <a href="#checklist" class="nav-link" data-section="checklist"><span class="nav-num">13</span> Checklist</a>
+      <a href="#errores" class="nav-link" data-section="errores"><span class="nav-num">14</span> Errores Comunes</a>
+      <a href="#practica" class="nav-link" data-section="practica"><span class="nav-num">15</span> Práctica</a>
+      <a href="#fuentes" class="nav-link" data-section="fuentes"><span class="nav-num">16</span> Fuentes</a>
+    </nav>
+    <div class="sidebar-footer">
+      <button class="theme-toggle" id="themeToggle" data-theme-toggle aria-label="Cambiar tema">
+        <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main content -->
+  <main class="main-content" id="mainContent">
+    <!-- Mobile top bar -->
+    <div class="mobile-topbar">
+      <button class="hamburger" id="hamburger" aria-label="Abrir menú">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+      <span class="mobile-title">Manual de Trading de Oro</span>
+      <button class="theme-toggle theme-toggle-mobile" id="themeToggleMobile" data-theme-toggle aria-label="Cambiar tema">
+        <svg class="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </button>
+    </div>
+
+    <!-- ============ 00. HERO ============ -->
+    <section id="here" class="section hero-section">
+      <div class="hero-content">
+        <span class="hero-eyebrow">XAU/USD · Guía Profesional</span>
+        <h1 class="hero-title">MANUAL DE TRADING<br /><span class="hero-title-accent">DE ORO</span></h1>
+        <p class="hero-subtitle">Estrategias para dejar de ser Pendejo en Trading</p>
+        <p class="hero-description">
+          Guía exhaustiva de 9 estrategias de trading para oro (XAU/USD), con gestión de riesgo,
+          análisis de sesiones, checklist operativo y plan de práctica. Todo el contenido está
+          basado en conceptos de price action, acción institucional y análisis técnico aplicado al oro.
+        </p>
+        <div class="hero-badges">
+          <span class="hero-badge"><strong>9</strong> Estrategias</span>
+          <span class="hero-badge"><strong>17</strong> Secciones</span>
+          <span class="hero-badge"><strong>12</strong> Gráficos</span>
+        </div>
+        <div class="hero-disclaimer">
+          <strong>Aviso:</strong> Los win rates presentados son estimaciones basadas en datos históricos
+          y experiencia profesional. El trading conlleva riesgo de pérdida. Esta guía es educativa y no
+          constituye asesoramiento financiero. Los resultados pasados no garantizan resultados futuros.
+        </div>
+        <a href="#resumen" class="hero-cta">Comenzar <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M19 12l-7 7-7-7"/></svg></a>
+      </div>
+    </section>
+
+    <!-- ============ 01. RESUMEN ============ -->
+    <section id="resumen" class="section">
+      <header class="section-header">
+        <span class="section-label">01 — Resumen General</span>
+        <h2 class="section-title">Comparativa de Estrategias</h2>
+        <p class="section-intro">
+          Las 9 estrategias analizadas en este manual, ordenadas por win rate estimado.
+          Cada estrategia tiene su sección dedicada con reglas de entrada, stop loss, take profit y ejemplos.
+        </p>
+      </header>
+
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Estrategia</th>
+              <th>Win Rate</th>
+              <th>Timeframe</th>
+              <th>R:R Mín.</th>
+              <th>Dificultad</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td><a href="#estrategia-1" class="table-link">Soporte y Resistencia</a></td><td><span class="wr-badge wr-medium">40–60%</span></td><td>H4, D1</td><td>1:2</td><td><span class="diff-easy">Baja</span></td></tr>
+            <tr><td>2</td><td><a href="#estrategia-2" class="table-link">EMA 13/34 Crossover</a></td><td><span class="wr-badge wr-medium">42–62%</span></td><td>M15, H1</td><td>1:2</td><td><span class="diff-easy">Baja</span></td></tr>
+            <tr><td>3</td><td><a href="#estrategia-3" class="table-link">RSI Divergencia</a></td><td><span class="wr-badge wr-medium">45–65%</span></td><td>H1, H4</td><td>1:2</td><td><span class="diff-medium">Media</span></td></tr>
+            <tr><td>4</td><td><a href="#estrategia-4" class="table-link">CRT (Candle Range Theory)</a></td><td><span class="wr-badge wr-high">55–75%</span></td><td>M5, M15</td><td>1:2</td><td><span class="diff-hard">Alta</span></td></tr>
+            <tr><td>5</td><td><a href="#estrategia-5" class="table-link">CHoCH + BOS</a></td><td><span class="wr-badge wr-high">50–70%</span></td><td>M15, H1</td><td>1:2</td><td><span class="diff-medium">Media</span></td></tr>
+            <tr><td>6</td><td><a href="#estrategia-6" class="table-link">Supply &amp; Demand</a></td><td><span class="wr-badge wr-high">52–72%</span></td><td>H1, H4</td><td>1:2</td><td><span class="diff-medium">Media</span></td></tr>
+            <tr><td>7</td><td><a href="#estrategia-7" class="table-link">London Breakout</a></td><td><span class="wr-badge wr-medium">48–68%</span></td><td>M15</td><td>1:2</td><td><span class="diff-easy">Baja</span></td></tr>
+            <tr><td>8</td><td><a href="#estrategia-8" class="table-link">Volume Profile</a></td><td><span class="wr-badge wr-medium">47–67%</span></td><td>H1, H4</td><td>1:2</td><td><span class="diff-medium">Media</span></td></tr>
+            <tr><td>9</td><td><a href="#estrategia-9" class="table-link">Breakout y Retest</a></td><td><span class="wr-badge wr-medium">45–65%</span></td><td>H1, H4</td><td>1:2</td><td><span class="diff-easy">Baja</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <figure class="chart-figure">
+        <img src="charts/11_winrate_comparison.png" alt="Comparativa de win rates de las 9 estrategias" loading="lazy" />
+        <figcaption>Comparativa visual de win rates estimados de las 9 estrategias. Los rangos reflejan la variabilidad según experiencia del trader y condiciones de mercado.</figcaption>
+      </figure>
+    </section>
+
+    <!-- ============ 02. RIESGO ============ -->
+    <section id="riesgo" class="section">
+      <header class="section-header">
+        <span class="section-label">02 — Gestión de Riesgo</span>
+        <h2 class="section-title">El Capital es tu Activo más Valioso</h2>
+        <p class="section-intro">
+          Ninguna estrategia funciona sin gestión de riesgo. La supervivencia en el trading depende
+          de proteger el capital, no de acertar cada operación. Esta sección define las reglas
+          innegociables.
+        </p>
+      </header>
+
+      <div class="card-grid card-grid-3">
+        <article class="info-card">
+          <h3 class="info-card-title">Riesgo por Operación</h3>
+          <p class="info-card-value">1–2%</p>
+          <p class="info-card-text">Nunca arriesgues más del 1–2% de tu capital por operación. Con un 2% máximo, puedes perder 20 operaciones seguidas y aún tener el 66% de tu capital intacto.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Risk:Reward Mínimo</h3>
+          <p class="info-card-value">1:2</p>
+          <p class="info-card-text">El ratio riesgo-beneficio mínimo es 1:2. Si arriesgas $100, tu objetivo debe ser ganar $200. Esto permite ser rentable incluso con un win rate del 40%.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Pérdida Diaria Máxima</h3>
+          <p class="info-card-value">3%</p>
+          <p class="info-card-text">Si pierdes el 3% de tu capital en un solo día, cierra la plataforma. Vuelve al día siguiente. Las pérdidas grandes provienen de la venganza (revenge trading).</p>
+        </article>
+      </div>
+
+      <h3 class="subsection-title">Fórmula de Tamaño de Posición</h3>
+      <div class="formula-card">
+        <p class="formula-text">
+          Tamaño de Posición = (Capital × % Riesgo) / (Precio Entrada − Stop Loss) × Tamaño del Lote
+        </p>
+      </div>
+      <div class="callout">
+        <strong>Ejemplo:</strong> Capital de $10,000, riesgo del 1% ($100). Si entras en XAU/USD a
+        $2,050 con stop loss en $2,045 (diferencia de $5), el tamaño es: $100 ÷ $5 × 100 (oz por lote) =
+        2 lotes mini. Ajusta el tamaño del lote según el broker.
+      </div>
+
+      <h3 class="subsection-title">Tabla de Rentabilidad: Win Rate × R:R</h3>
+      <div class="table-wrapper">
+        <table class="data-table data-table-compact">
+          <thead>
+            <tr>
+              <th>Win Rate</th>
+              <th>R:R 1:1</th>
+              <th>R:R 1:2</th>
+              <th>R:R 1:3</th>
+              <th>R:R 1:4</th>
+              <th>R:R 1:5</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>30%</td><td class="cell-loss">−70.0%</td><td class="cell-loss">−10.0%</td><td class="cell-loss">−11.7%</td><td class="cell-loss">−9.4%</td><td class="cell-loss">−6.0%</td></tr>
+            <tr><td>35%</td><td class="cell-loss">−65.0%</td><td class="cell-loss">−5.0%</td><td class="cell-loss">−1.7%</td><td class="cell-profit">+1.3%</td><td class="cell-profit">+5.0%</td></tr>
+            <tr><td>40%</td><td class="cell-loss">−60.0%</td><td class="cell-profit">+20.0%</td><td class="cell-profit">+50.0%</td><td class="cell-profit">+80.0%</td><td class="cell-profit">+110.0%</td></tr>
+            <tr><td>45%</td><td class="cell-loss">−55.0%</td><td class="cell-profit">+35.0%</td><td class="cell-profit">+72.5%</td><td class="cell-profit">+110.0%</td><td class="cell-profit">+147.5%</td></tr>
+            <tr><td>50%</td><td class="cell-neutral">0.0%</td><td class="cell-profit">+50.0%</td><td class="cell-profit">+100.0%</td><td class="cell-profit">+150.0%</td><td class="cell-profit">+200.0%</td></tr>
+            <tr><td>55%</td><td class="cell-profit">+10.0%</td><td class="cell-profit">+65.0%</td><td class="cell-profit">+127.5%</td><td class="cell-profit">+190.0%</td><td class="cell-profit">+252.5%</td></tr>
+            <tr><td>60%</td><td class="cell-profit">+20.0%</td><td class="cell-profit">+80.0%</td><td class="cell-profit">+155.0%</td><td class="cell-profit">+230.0%</td><td class="cell-profit">+305.0%</td></tr>
+            <tr><td>65%</td><td class="cell-profit">+30.0%</td><td class="cell-profit">+95.0%</td><td class="cell-profit">+182.5%</td><td class="cell-profit">+270.0%</td><td class="cell-profit">+357.5%</td></tr>
+            <tr><td>70%</td><td class="cell-profit">+40.0%</td><td class="cell-profit">+110.0%</td><td class="cell-profit">+210.0%</td><td class="cell-profit">+310.0%</td><td class="cell-profit">+410.0%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="table-caption">Retorno neto en R sobre 100 operaciones. Verde = rentable, rojo = pérdida. Con un 40% de win rate y 1:2 ya eres rentable.</p>
+
+      <figure class="chart-figure">
+        <img src="charts/12_risk_management.png" alt="Gestión de riesgo: curvas de equity según win rate y risk reward" loading="lazy" />
+        <figcaption>Gestión de riesgo: curvas de capital según combinación de win rate y ratio riesgo-beneficio.</figcaption>
+      </figure>
+
+      <h3 class="subsection-title">Psicología del Trading</h3>
+      <div class="card-grid card-grid-2">
+        <article class="info-card">
+          <h3 class="info-card-title">Disciplina</h3>
+          <p class="info-card-text">Sigue tu plan. La desviación emocional es la causa nº1 de pérdida. Define tus reglas antes de abrir la plataforma y cíñete a ellas mecánicamente.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Paciencia</h3>
+          <p class="info-card-text">No operar también es una posición. La mejor operación es la que no tomas. Espera tu setup; el oro da múltiples oportunidades diarias.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Gestión de Pérdidas</h3>
+          <p class="info-card-text">Aceptar la pérdida es parte del juego. Mover el stop loss es el primer paso hacia la ruina. La pérdida planificada es una inversión en información.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Revenge Trading</h3>
+          <p class="info-card-text">Después de una pérdida, el impulso de recuperar es máximo. Regla de oro: después de 2 pérdidas consecutivas, para el día. Mañana es otro día.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 03. EL ORO ============ -->
+    <section id="el-oro" class="section">
+      <header class="section-header">
+        <span class="section-label">03 — Conociendo el Oro</span>
+        <h2 class="section-title">Cómo se Mueve el Oro (XAU/USD)</h2>
+        <p class="section-intro">
+          El oro es uno de los activos más volátiles y líquidos del mundo. Entender sus características
+          únicas es esencial antes de aplicar cualquier estrategia. Su comportamiento difiere del forex
+          tradicional en volumen, horarios y sensibilidad a eventos macroeconómicos.
+        </p>
+      </header>
+
+      <h3 class="subsection-title">Características del Oro</h3>
+      <div class="card-grid card-grid-2">
+        <article class="info-card">
+          <h3 class="info-card-title">Alta Volatilidad</h3>
+          <p class="info-card-text">El oro puede mover 200–400 pips en un día con alta liquidez. En NFP o FOMC puede mover más de 500 pips. Esto crea oportunidades pero también exige stops más amplios.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Refugio Seguro</h3>
+          <p class="info-card-text">En tiempos de incertidumbre geopolítica o económica, el oro se aprecia como activo refugio. Guerras, crisis bancarias y pandemias disparan su demanda.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Correlación con DXY</h3>
+          <p class="info-card-text">Existe correlación inversa con el dólar estadounidense (DXY). Cuando el dólar se debilita, el oro suele subir, y viceversa. No es perfecta pero es una de las más fiables.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Relación con Tasas Reales</h3>
+          <p class="info-card-text">El oro no genera intereses, por lo que las tasas de interés reales (nominales − inflación) son su mayor driver estructural. Tasas reales negativas son alcistas para el oro.</p>
+        </article>
+      </div>
+
+      <h3 class="subsection-title">Sesiones de Trading</h3>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Sesión</th>
+              <th>Horario (UTC)</th>
+              <th>Volatilidad</th>
+              <th>Característica</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Asia</td><td>00:00 – 07:00</td><td>Baja–Media</td><td>Rangos laterales, acumulación. Breakouts falsos frecuentes.</td></tr>
+            <tr><td>Londres</td><td>07:00 – 16:00</td><td>Alta</td><td>Máxima volatilidad y volumen. Mejor sesión para oro.</td></tr>
+            <tr><td>Nueva York</td><td>13:00 – 21:00</td><td>Alta</td><td>Solape con Londres = pico de liquidez. Datos macro EE.UU.</td></tr>
+            <tr><td>Solape LDN/NY</td><td>13:00 – 16:00</td><td>Máxima</td><td>La ventana más activa. Mejores oportunidades.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="subsection-title">Factores que Mueven el Oro</h3>
+      <div class="card-grid card-grid-3">
+        <article class="info-card info-card-accent">
+          <h3 class="info-card-title">DXY</h3>
+          <p class="info-card-text">Índice del Dólar. Correlación inversa predominante. Vigila el DXY antes de cualquier entrada en oro.</p>
+        </article>
+        <article class="info-card info-card-accent">
+          <h3 class="info-card-title">Tasas de Interés</h3>
+          <p class="info-card-text">Decisiones de la Fed y expectativas. Subidas de tasas tienden a debilitar el oro; bajadas lo impulsan.</p>
+        </article>
+        <article class="info-card info-card-accent">
+          <h3 class="info-card-title">NFP</h3>
+          <p class="info-card-text">Non-Farm Payrolls (primer viernes de mes). El dato más volátil para oro. Puede mover 300+ pips.</p>
+        </article>
+        <article class="info-card info-card-accent">
+          <h3 class="info-card-title">CPI</h3>
+          <p class="info-card-text">Índice de Precios al Consumidor. Inflación alta suele impulsar el oro como cobertura inflacionaria.</p>
+        </article>
+        <article class="info-card info-card-accent">
+          <h3 class="info-card-title">FOMC</h3>
+          <p class="info-card-text">Decisiones de política monetaria y minutos. El tono hawkish/dovish mueve al oro inmediatamente.</p>
+        </article>
+        <article class="info-card info-card-accent">
+          <h3 class="info-card-title">Geopolítica</h3>
+          <p class="info-card-text">Conflictos, guerras, sanciones, crisis bancarias. El oro reacciona como refugio seguro.</p>
+        </article>
+      </div>
+
+      <h3 class="subsection-title">Mejores Horarios para Operar Oro</h3>
+      <div class="callout callout-gold">
+        <ul class="bullet-list">
+          <li><strong>Solape Londres–Nueva York (13:00–16:00 UTC):</strong> máxima liquidez y volatilidad. La mejor ventana.</li>
+          <li><strong>Apertura de Londres (07:00–09:00 UTC):</strong> ideal para estrategias de breakout (London Breakout).</li>
+          <li><strong>Cierre de NY (20:00–21:00 UTC):</strong> útil para cerrar posiciones y revisar el rango diario.</li>
+          <li><strong>Evitar:</strong> sesión asiática para estrategias de momentum (baja volatilidad) y 30 min antes/después de noticias programadas.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ============ 04. ESTRATEGIA 1: Soporte/Resistencia ============ -->
+    <section id="estrategia-1" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">04 — Estrategia 1</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">Soporte y Resistencia</h2>
+            <span class="wr-badge wr-medium wr-badge-lg">Win Rate 40–60%</span>
+          </div>
+          <p class="section-intro">
+            La base de todo análisis técnico. Los niveles de soporte y resistencia son zonas de precio
+            donde el mercado ha reaccionado repetidamente. Operar rebotes en estos niveles es la
+            estrategia más fundamental y accesible.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto</h3>
+            <p>Un <strong>soporte</strong> es un nivel donde el precio tiende a detener caídas (demanda supera oferta).
+            Una <strong>resistencia</strong> es un nivel donde el precio tiende a detener subidas (oferta supera demanda).
+            Cuanto más veces el precio toca un nivel sin romperlo, más fuerte es. Estos niveles pueden ser
+            zonas (no líneas exactas) de 3–10 pips en oro.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Reglas de Entrada — Compra</h3>
+            <ol class="rules-list">
+              <li>Identificar un nivel de soporte probado al menos 2 veces.</li>
+              <li>Esperar a que el precio se acerque al soporte en H1 o H4.</li>
+              <li>Confirmar con patrón de reversión: martillo (hammer), envolvente alcista o pin bar.</li>
+              <li>Entrar en compra tras el cierre de la vela de confirmación.</li>
+              <li>Stop loss: 5–10 pips por debajo del soporte.</li>
+              <li>Take profit: resistencia más cercana o ratio 1:2 mínimo.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Reglas de Entrada — Venta</h3>
+            <ol class="rules-list">
+              <li>Identificar un nivel de resistencia probado al menos 2 veces.</li>
+              <li>Esperar a que el precio se acerque a la resistencia en H1 o H4.</li>
+              <li>Confirmar con patrón de reversión: estrella fugaz, envolvente bajista o pin bearish.</li>
+              <li>Entrar en venta tras el cierre de la vela de confirmación.</li>
+              <li>Stop loss: 5–10 pips por encima de la resistencia.</li>
+              <li>Take profit: soporte más cercano o ratio 1:2 mínimo.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Stop Loss / Take Profit</h3>
+            <table class="data-table data-table-compact">
+              <thead><tr><th>Parámetro</th><th>Valor</th></tr></thead>
+              <tbody>
+                <tr><td>Stop Loss</td><td>5–10 pips más allá del nivel</td></tr>
+                <tr><td>Take Profit</td><td>Nivel opuesto o 1:2 mínimo</td></tr>
+                <tr><td>Break Even</td><td>Tras +1R mover SL a entrada</td></tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Ejemplo</h3>
+            <p>El oro toca $2,050 (soporte) tres veces en dos semanas. En el cuarto toque, forma un martillo
+            en H1 con mecha inferior larga. Entras en compra a $2,051. Stop loss en $2,045 (−$6). Take profit
+            en $2,063 (resistencia, +$12). Ratio 1:2. Si el precio no respeta el nivel, pierdes $6 por lote.</p>
+          </div>
+
+          <div class="strategy-block strategy-pros-cons">
+            <div class="pros">
+              <h4 class="block-title">Ventajas</h4>
+              <ul class="bullet-list">
+                <li>Fácil de entender e identificar.</li>
+                <li>Funciona en todos los timeframes.</li>
+                <li>Zonas claras de riesgo/recompensa.</li>
+                <li>Ideal para traders principiantes.</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h4 class="block-title">Desventajas</h4>
+              <ul class="bullet-list">
+                <li>Falsos rompimientos frecuentes.</li>
+                <li>Requiere paciencia para esperar confirmación.</li>
+                <li>Win rate moderado sin confirmación adicional.</li>
+                <li>Niveles subjetivos en tiempo real.</li>
+              </ul>
+            </div>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/01_support_resistance.png" alt="Gráfico de soporte y resistencia en XAU/USD" loading="lazy" />
+            <figcaption>Ejemplo de niveles de soporte y resistencia en XAU/USD con entradas y salidas.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 05. ESTRATEGIA 2: EMA 13/34 ============ -->
+    <section id="estrategia-2" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">05 — Estrategia 2</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">EMA 13/34 Crossover</h2>
+            <span class="wr-badge wr-medium wr-badge-lg">Win Rate 42–62%</span>
+          </div>
+          <p class="section-intro">
+            Estrategia de seguimiento de tendencia basada en el cruce de dos medias móviles exponenciales
+            (EMA). La EMA 13 (rápida) y la EMA 34 (lenta) generan señales cuando se cruzan.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto</h3>
+            <p>Las medias exponenciales dan más peso a los precios recientes que las simples (SMA). Cuando la EMA
+            rápida (13 periodos) cruza por encima de la lenta (34 periodos), genera señal alcista. Al contrario,
+            señal bajista. El oro tiende a respetar las EMA en tendencias fuertes, especialmente la EMA 50 y 200
+            en timeframes mayores.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Configuración</h3>
+            <ul class="bullet-list">
+              <li><strong>Timeframe:</strong> M15 o H1.</li>
+              <li><strong>EMA 13:</strong> media rápida (periodo corto).</li>
+              <li><strong>EMA 34:</strong> media lenta (periodo medio).</li>
+              <li><strong>Filtro de tendencia:</strong> EMA 200 para confirmar dirección general.</li>
+              <li><strong>RSI (14):</strong> como filtro de sobrecompra/sobreventa.</li>
+            </ul>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Reglas de Entrada — Compra</h3>
+            <ol class="rules-list">
+              <li>EMA 13 cruza por encima de EMA 34 (cruce alcista).</li>
+              <li>El precio está por encima de la EMA 200 (tendencia alcista).</li>
+              <li>RSI entre 40 y 70 (no sobrecomprado).</li>
+              <li>Esperar a que la vela cierre por encima de ambas EMAs.</li>
+              <li>Entrar en compra en la apertura de la siguiente vela.</li>
+              <li>Stop loss: debajo del último mínimo o debajo de la EMA 34.</li>
+              <li>Take profit: 1:2 o esperar cruce inverso.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Reglas de Entrada — Venta</h3>
+            <ol class="rules-list">
+              <li>EMA 13 cruza por debajo de EMA 34 (cruce bajista).</li>
+              <li>El precio está por debajo de la EMA 200 (tendencia bajista).</li>
+              <li>RSI entre 30 y 60 (no sobrevendido).</li>
+              <li>Esperar a que la vela cierre por debajo de ambas EMAs.</li>
+              <li>Entrar en venta en la apertura de la siguiente vela.</li>
+              <li>Stop loss: encima del último máximo o encima de la EMA 34.</li>
+              <li>Take profit: 1:2 o esperar cruce inverso.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Filtros Adicionales</h3>
+            <ul class="bullet-list">
+              <li><strong>Evitar cruces en mercados laterales:</strong> si la EMA 13 y 34 están planas y se cruzan repetidamente sin dirección, no operar.</li>
+              <li><strong>Confirmación de impulso:</strong> esperar 2–3 velas tras el cruce antes de entrar (reduce señales falsas).</li>
+              <li><strong>MACD:</strong> usar como confirmación secundaria. Histograma a favor de la dirección.</li>
+              <li><strong>Volumen:</strong> mayor volumen en la vela de cruce valida la señal.</li>
+            </ul>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/02_ema_crossover.png" alt="Gráfico de cruce EMA 13/34 en XAU/USD" loading="lazy" />
+            <figcaption>Cruce de EMA 13 y EMA 34 con señales de compra y venta en XAU/USD.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 06. ESTRATEGIA 3: RSI Divergencia ============ -->
+    <section id="estrategia-3" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">06 — Estrategia 3</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">RSI Divergencia</h2>
+            <span class="wr-badge wr-medium wr-badge-lg">Win Rate 45–65%</span>
+          </div>
+          <p class="section-intro">
+            La divergencia del RSI es uno de los indicadores de reversión más potentes. Detecta cuando
+            el impulso del precio se agota, anticipando cambios de dirección antes de que ocurran.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto</h3>
+            <p>Una <strong>divergencia</strong> ocurre cuando el precio y el RSI se mueven en direcciones opuestas.
+            Si el precio hace máximos más altos pero el RSI hace máximos más bajos, hay divergencia bajista
+            (el impulso alcista se agota). Si el precio hace mínimos más bajos pero el RSI hace mínimos más
+            altos, hay divergencia alcista (el impulso bajista se agota). El RSI mide la velocidad y magnitud
+            de los movimientos de precio.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Divergencia Alcista (Compra)</h3>
+            <ol class="rules-list">
+              <li>Identificar que el precio hace mínimos más bajos (LL: Lower Low).</li>
+              <li>El RSI hace mínimos más altos (HL: Higher Low) en la misma zona.</li>
+              <li>Esperar a que el RSI salga de zona de sobreventa (cruce de 30 hacia arriba).</li>
+              <li>Confirmar con vela de reversión: martillo, envolvente alcista o cruz alcista.</li>
+              <li>Entrar en compra en el cierre de la vela de confirmación.</li>
+              <li>Stop loss: debajo del último mínimo del precio.</li>
+              <li>Take profit: ratio 1:2 o resistencia más cercana.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Divergencia Bajista (Venta)</h3>
+            <ol class="rules-list">
+              <li>Identificar que el precio hace máximos más altos (HH: Higher High).</li>
+              <li>El RSI hace máximos más bajos (LH: Lower High) en la misma zona.</li>
+              <li>Esperar a que el RSI salga de zona de sobrecompra (cruce de 70 hacia abajo).</li>
+              <li>Confirmar con vela de reversión: estrella fugaz, envolvente bajista o cruz bajista.</li>
+              <li>Entrar en venta en el cierre de la vela de confirmación.</li>
+              <li>Stop loss: encima del último máximo del precio.</li>
+              <li>Take profit: ratio 1:2 o soporte más cercano.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Confirmación</h3>
+            <ul class="bullet-list">
+              <li><strong>Divergencia regular vs oculta:</strong> la regular señala reversión; la oculta señala continuación de tendencia.</li>
+              <li><strong>Múltiples timeframe:</strong> divergencia en H4 es más fuerte que en M15.</li>
+              <li><strong>Niveles de S/R:</strong> divergencia en soporte/resistencia clave = alta probabilidad.</li>
+              <li><strong>RSI en extremos:</strong> divergencia con RSI &lt; 30 o &gt; 70 es más fiable.</li>
+              <li><strong>Patrón de vela:</strong> siempre esperar confirmación con price action, no entrar solo por el RSI.</li>
+            </ul>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/03_rsi_divergence.png" alt="Gráfico de divergencia RSI en XAU/USD" loading="lazy" />
+            <figcaption>Divergencia alcista y bajista del RSI con confirmación de price action en XAU/USD.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 07. ESTRATEGIA 4: CRT (FLAGSHIP) ============ -->
+    <section id="estrategia-4" class="section section-flagship">
+      <article class="strategy-card strategy-card-flagship">
+        <header class="strategy-header">
+          <span class="section-label section-label-gold">07 — Estrategia Estrella</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">CRT — Candle Range Theory</h2>
+            <span class="wr-badge wr-high wr-badge-lg">Win Rate 55–75%</span>
+          </div>
+          <p class="section-intro">
+            La estrategia más completa y con mayor win rate de este manual. El CRT (Candle Range Theory)
+            es un modelo de lectura institucional del mercado que divide la acción del precio en tres fases:
+            acumulación, manipulación y distribución. Comprender el CRT es entender cómo operan los grandes
+            participantes.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block strategy-block-gold">
+            <h3 class="block-title">Las 3 Velas del CRT</h3>
+            <p>El CRT se basa en tres velas consecutivas que representan el ciclo completo de la acción
+            institucional del precio. Cada vela tiene un rol específico y predecible.</p>
+            <div class="crt-phases">
+              <div class="crt-phase">
+                <span class="crt-phase-num">1</span>
+                <h4 class="crt-phase-title">Acumulación</h4>
+                <p>La primera vela establece el rango. Instituciones acumulan posiciones sin mover
+                significativamente el precio. Es una vela de rango definido, ni claramente alcista
+                ni bajista. Define el <strong>CRH</strong> (Candle Range High) y el <strong>CRL</strong>
+                (Candle Range Low).</p>
+              </div>
+              <div class="crt-phase">
+                <span class="crt-phase-num">2</span>
+                <h4 class="crt-phase-title">Manipulación</h4>
+                <p>La segunda vela rompe falsamente uno de los extremos del rango (CRH o CRL) para
+                captar liquidez — stops de traders retail y órdenes pendientes. Es el <em>liquidity
+                sweep</em>. El precio penettra el extremo y luego regresa. Esta es la vela donde las
+                instituciones atrapan a los traders inexpertos.</p>
+              </div>
+              <div class="crt-phase">
+                <span class="crt-phase-num">3</span>
+                <h4 class="crt-phase-title">Distribución</h4>
+                <p>La tercera vela expande en la dirección opuesta a la manipulación. Aquí las
+                instituciones distribuyen sus posiciones y el precio se mueve con fuerza. Es la
+                vela de impulso donde entramos y capturamos el movimiento principal.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">PO3 — Power of Three (AMD)</h3>
+            <p>El PO3 o <strong>Power of Three</strong> es el modelo ICT equivalente al CRT. Representa
+            las tres fases del mercado en cualquier timeframe:</p>
+            <ul class="bullet-list">
+              <li><strong>A (Accumulation):</strong> formación del rango, consolidación.</li>
+              <li><strong>M (Manipulation):</strong> barrido de liquidez (liquidity sweep) en un extremo.</li>
+              <li><strong>D (Distribution):</strong> expansión direccional, el movimiento real.</li>
+            </ul>
+            <p>El PO3 se puede observar en timeframes de M1 hasta semanal. La clave está en identificar
+            la fase de acumulación y esperar la manipulación antes de entrar en la distribución.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Turtle Soup</h3>
+            <p>El patrón <strong>Turtle Soup</strong> es una técnica de reversión que forma parte del CRT.
+            Se produce cuando:</p>
+            <ol class="rules-list">
+              <li>Hay un nivel de soporte/resistencia claro (swing high/low).</li>
+              <li>El precio lo rompe ligeramente (falso breakout), capturando stops.</li>
+              <li>Inmediatamente regresa dentro del rango anterior con fuerza.</li>
+              <li>La entrada se produce en la vela que regresa al rango, en dirección contraria al falso rompimiento.</li>
+            </ol>
+            <p>El nombre proviene del experimento de los Turtle Traders. Es uno de los setups de
+            reversión más fiables en oro, especialmente en H1 y H4.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">CSD — Change in State of Delivery</h3>
+            <p>El <strong>CSD</strong> (Change in State of Delivery) marca el momento exacto en que el
+            mercado cambia de acumulación a expansión. Es el punto de inflexión donde:</p>
+            <ul class="bullet-list">
+              <li>La estructura de mercado pasa de rango lateral a movimiento direccional.</li>
+              <li>El impulso (momentum) cambia de débil a fuerte.</li>
+              <li>El volumen aumenta significativamente.</li>
+              <li>Una vela cierra con cuerpo decisivo fuera del rango de acumulación.</li>
+            </ul>
+            <p>El CSD es la confirmación de que la manipulación ha terminado y la distribución ha comenzado.
+            Entrar en el CSD es la entrada óptima del CRT.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Tipos de CRT</h3>
+            <div class="table-wrapper">
+              <table class="data-table">
+                <thead>
+                  <tr><th>Tipo</th><th>Manipulación</th><th>Dirección</th><th>Descripción</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>CRT Alcista</td><td>Baja (sweep CRL)</td><td>Alcista</td><td>Sweep del mínimo, distribución hacia arriba.</td></tr>
+                  <tr><td>CRT Bajista</td><td>Sube (sweep CRH)</td><td>Bajista</td><td>Sweep del máximo, distribución hacia abajo.</td></tr>
+                  <tr><td>CRT Bidireccional</td><td>Ambos extremos</td><td>Según cierre</td><td>Sweep de ambos lados antes de definir dirección.</td></tr>
+                  <tr><td>CRT Continuación</td><td>Contra tendencia</td><td>A favor</td><td>Manipulación contra tendencia previa, continuación.</td></tr>
+                  <tr><td>CRT Reversión</td><td>A favor tendencia</td><td>Contra</td><td>Manipulación a favor, reversión de tendencia.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Cómo Identificar CRH y CRL</h3>
+            <p>El <strong>CRH (Candle Range High)</strong> y el <strong>CRL (Candle Range Low)</strong> son
+            los extremos de la vela de acumulación:</p>
+            <ul class="bullet-list">
+              <li><strong>CRH:</strong> máximo de la vela de acumulación (incluyendo mecha).</li>
+              <li><strong>CRL:</strong> mínimo de la vela de acumulación (incluyendo mecha).</li>
+              <li>La vela de acumulación ideal tiene cuerpo pequeño y mechas moderadas.</li>
+              <li>El rango (CRH − CRL) define el objetivo de la manipulación.</li>
+              <li>Una manipulación válida debe penetrar CRH o CRL y cerrar de vuelta dentro del rango.</li>
+            </ul>
+            <p>Cuando el precio hace sweep del CRL y regresa, esperamos distribución alcista.
+            Cuando hace sweep del CRH y regresa, esperamos distribución bajista.</p>
+          </div>
+
+          <div class="strategy-block strategy-block-highlight">
+            <h3 class="block-title">Reglas de Entrada Paso a Paso</h3>
+            <ol class="rules-list rules-list-detailed">
+              <li><strong>Identificar la vela de acumulación:</strong> vela de rango en M5, M15 o H1 con CRH y CRL claros.</li>
+              <li><strong>Marcar CRH y CRL:</strong> trazar líneas horizontales en los extremos de la vela.</li>
+              <li><strong>Esperar la manipulación:</strong> el precio debe romper CRH o CRL y regresar dentro del rango.</li>
+              <li><strong>Confirmar el sweep:</strong> la vela de manipulación debe cerrar dentro del rango o mostrar mecha de rechazo.</li>
+              <li><strong>Identificar CSD:</strong> la siguiente vela debe mostrar impulso direccional opuesto a la manipulación.</li>
+              <li><strong>Confirmaciones adicionales:</strong> MSS (Market Structure Shift), OB (Order Block) y/o FVG (Fair Value Gap) en la dirección de la distribución.</li>
+              <li><strong>Entrar:</strong> en la vela de distribución tras el CSD, o en el retest del OB/FVG creado.</li>
+              <li><strong>Stop loss:</strong> por debajo/encima del extremo de la manipulación (el sweep).</li>
+              <li><strong>Take profit:</strong> ratio 1:2 a 1:5, o liquidez opuesta (swing high/low previo).</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Timeframes Recomendados</h3>
+            <div class="table-wrapper">
+              <table class="data-table data-table-compact">
+                <thead><tr><th>Uso</th><th>Timeframe</th><th>Notas</th></tr></thead>
+                <tbody>
+                  <tr><td>Acumulación</td><td>M5, M15</td><td>Mejor para intradía. Rangos más limpios.</td></tr>
+                  <tr><td>Acumulación (swing)</td><td>H1, H4</td><td>Para operaciones multiday. Más fiable.</td></tr>
+                  <tr><td>Manipulación</td><td>M1, M5</td><td>Bajar timeframe para ver el sweep en detalle.</td></tr>
+                  <tr><td>Distribución</td><td>M5, M15</td><td>Capturar el movimiento principal.</td></tr>
+                  <tr><td>Tendencia general</td><td>H4, D1</td><td>Operar CRT a favor de la tendencia mayor.</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Confirmaciones: MSS, OB, FVG</h3>
+            <div class="card-grid card-grid-3">
+              <article class="info-card">
+                <h4 class="info-card-title">MSS — Market Structure Shift</h4>
+                <p class="info-card-text">El mercado rompe un swing high/low en la dirección de la distribución. Confirma el cambio de estructura. Es la señal más fuerte de que la reversión es real.</p>
+              </article>
+              <article class="info-card">
+                <h4 class="info-card-title">OB — Order Block</h4>
+                <p class="info-card-text">La última vela bajista (en CRT alcista) o alcista (en CRT bajista) antes del movimiento. Zona donde las instituciones colocaron órdenes. Retest del OB = entrada de alta probabilidad.</p>
+              </article>
+              <article class="info-card">
+                <h4 class="info-card-title">FVG — Fair Value Gap</h4>
+                <p class="info-card-text">Hueco de precio dejado por la vela de distribución impulsiva. El precio tiende a rellenar los FVG. Entrar en el FVG tras el CSD es óptimo para mejorar el R:R.</p>
+              </article>
+            </div>
+            <p>Cuando las tres confirmaciones (MSS + OB + FVG) se alinean tras una manipulación de CRT,
+            la probabilidad de éxito supera el 75%. Esta es la configuración más poderosa del manual.</p>
+          </div>
+
+          <div class="strategy-block strategy-pros-cons">
+            <div class="pros">
+              <h4 class="block-title">Ventajas</h4>
+              <ul class="bullet-list">
+                <li>Mayor win rate del manual (55–75%).</li>
+                <li>Modelo lógico basado en comportamiento institucional.</li>
+                <li>Funciona en todos los timeframes y mercados.</li>
+                <li>R:R excelente (1:2 a 1:5).</li>
+                <li>Entradas precisas con confirmaciones múltiples.</li>
+              </ul>
+            </div>
+            <div class="cons">
+              <h4 class="block-title">Desventajas</h4>
+              <ul class="bullet-list">
+                <li>Curva de aprendizaje elevada.</li>
+                <li>Requiere identificar acumulación correcta.</li>
+                <li>La manipulación puede prolongarse (multi-sweep).</li>
+                <li>Necesita práctica intensiva en backtesting.</li>
+                <li>Subjetividad en la identificación inicial.</li>
+              </ul>
+            </div>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/04_crt.png" alt="Gráfico de CRT Candle Range Theory en XAU/USD" loading="lazy" />
+            <figcaption>CRT completo: acumulación, manipulación (sweep) y distribución con confirmaciones MSS, OB y FVG.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 08. ESTRATEGIA 5: CHoCH + BOS ============ -->
+    <section id="estrategia-5" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">08 — Estrategia 5</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">CHoCH + BOS</h2>
+            <span class="wr-badge wr-high wr-badge-lg">Win Rate 50–70%</span>
+          </div>
+          <p class="section-intro">
+            CHoCH (Change of Character) y BOS (Break of Structure) son los dos eventos que definen
+            los cambios de estructura del mercado. Detectarlos permite entrar en reversiones de
+            tendencia con alta probabilidad.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto BOS — Break of Structure</h3>
+            <p>Un <strong>BOS</strong> ocurre cuando el precio rompe un swing high (en tendencia alcista)
+            o un swing low (en tendencia bajista), <strong>confirmando la continuación</strong> de la
+            tendencia actual. El BOS valida que la estructura de mercado sigue intacta y es el momento
+            donde los traders de tendencia entran o añaden posiciones.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto CHoCH — Change of Character</h3>
+            <p>Un <strong>CHoCH</strong> ocurre cuando el precio rompe la estructura en dirección
+            <strong>contraria</strong> a la tendencia previa. En una tendencia alcista, el precio rompe
+            un swing low → CHoCH bajista. En una tendencia bajista, rompe un swing high → CHoCH alcista.
+            El CHoCH es la <strong>primera señal de reversión</strong> de tendencia y precede al BOS en
+            la nueva dirección.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Liquidity Sweep (Barrido de Liquidez)</h3>
+            <p>Antes de un CHoCH válido, suele haber un <strong>liquidity sweep</strong>: el precio
+            rompe un extremo (capturando stops) y regresa. Este sweep es la manipulación que precede
+            al cambio de estructura. Identificar el sweep es clave para no entrar prematuramente.</p>
+          </div>
+
+          <div class="strategy-block strategy-block-highlight">
+            <h3 class="block-title">Reglas de Reversión Paso a Paso</h3>
+            <ol class="rules-list rules-list-detailed">
+              <li><strong>Identificar la tendencia:</strong> determinar si el mercado es alcista (HH/HL) o bajista (LH/LL).</li>
+              <li><strong>Identificar liquidez:</strong> marcar el último swing high (en alcista) o swing low (en bajista).</li>
+              <li><strong>Esperar el sweep:</strong> el precio rompe el swing pero regresa rápidamente (mecha de rechazo).</li>
+              <li><strong>Confirmar CHoCH:</strong> el precio rompe el swing opuesto en dirección contraria a la tendencia.</li>
+              <li><strong>Esperar BOS:</strong> tras el CHoCH, el precio hace un pullback y rompe la nueva estructura en la dirección del CHoCH (confirma la reversión).</li>
+              <li><strong>Buscar OB/FVG:</strong> identificar el order block o fair value gap creado durante el CHoCH.</li>
+              <li><strong>Entrar:</strong> en el retest del OB/FVG o en el BOS confirmatorio.</li>
+              <li><strong>Stop loss:</strong> por debajo/encima del extremo del sweep original.</li>
+              <li><strong>Take profit:</strong> siguientes niveles de liquidez (swings previos) o ratio 1:2 a 1:4.</li>
+            </ol>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/05_trend_reversal.png" alt="Gráfico de CHoCH y BOS en XAU/USD" loading="lazy" />
+            <figcaption>CHoCH seguido de BOS con liquidity sweep en XAU/USD. La secuencia completa de reversión de estructura.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 09. ESTRATEGIA 6: Supply & Demand ============ -->
+    <section id="estrategia-6" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">09 — Estrategia 6</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">Supply &amp; Demand</h2>
+            <span class="wr-badge wr-high wr-badge-lg">Win Rate 52–72%</span>
+          </div>
+          <p class="section-intro">
+            La estrategia de zonas de oferta y demanda identifica dónde los grandes participantes
+            colocan órdenes. Operar desde estas zonas permite entrar en el inicio de movimientos
+            direccional con excelente R:R.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto</h3>
+            <p>El mercado se mueve entre zonas de <strong>supply</strong> (oferta — zonas donde vendedores
+            institucionales actúan) y <strong>demand</strong> (demanda — zonas donde compradores
+            institucionales actúan). Cuando el precio retorna a estas zonas, las órdenes pendientes se
+            activan y generan movimientos direccional fuertes.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Zonas de Supply y Demand</h3>
+            <ul class="bullet-list">
+              <li><strong>Zona de Demand:</strong> área donde el precio rebotó fuertemente hacia arriba. Base del movimiento alcista. Buscamos compras aquí.</li>
+              <li><strong>Zona de Supply:</strong> área donde el precio cayó fuertemente. Base del movimiento bajista. Buscamos ventas aquí.</li>
+              <li><strong>Calidad de la zona:</strong> cuanto más fuerte fue el movimiento que partió de la zona, más fiable es.</li>
+              <li><strong>Frescura:</strong> la zona es más fuerte si no ha sido tocada desde su creación (fresh zone).</li>
+            </ul>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Order Blocks</h3>
+            <p>Un <strong>Order Block (OB)</strong> es la última vela bajista antes de un movimiento
+            alcista fuerte (bullish OB) o la última vela alcista antes de un movimiento bajista fuerte
+            (bearish OB). Los OB son zonas de órdenes institucionales:</p>
+            <ul class="bullet-list">
+              <li><strong>Bullish OB:</strong> última vela bajista antes del impulso alcista. Entrada en compra al retest.</li>
+              <li><strong>Bearish OB:</strong> última vela alcista antes del impulso bajista. Entrada en venta al retest.</li>
+              <li><strong>OB interno:</strong> dentro de un rango, menor probabilidad.</li>
+              <li><strong>OB externo:</strong> en extremos de swing, mayor probabilidad.</li>
+            </ul>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Fair Value Gaps (FVG)</h3>
+            <p>Un <strong>FVG</strong> es un hueco de precio dejado por una vela impulsiva. Ocurre cuando
+            la mecha de una vela no se solapa con la mecha de la vela dos posiciones anterior. El precio
+            tiende a regresar a los FVG para "rellenar" el hueco antes de continuar. Los FVG son zonas
+            de entrada de alta probabilidad y mejoran el R:R notablemente.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Reglas de Entrada</h3>
+            <ol class="rules-list">
+              <li>Identificar zona de demand/supply u order block en H1 o H4.</li>
+              <li>Esperar a que el precio retorne a la zona (retest).</li>
+              <li>Confirmar con price action: vela de rechazo, pin bar, envolvente.</li>
+              <li>Opcional: buscar FVG cercano como zona de entrada más precisa.</li>
+              <li>Entrar en la dirección del impulso original que creó la zona.</li>
+              <li>Stop loss: por debajo/encima de la zona de supply/demand.</li>
+              <li>Take profit: zona opuesta o ratio 1:2 a 1:5.</li>
+            </ol>
+          </div>
+
+          <div class="chart-grid-2-images">
+            <figure class="chart-figure">
+              <img src="charts/06_supply_demand.png" alt="Zonas de supply y demand en XAU/USD" loading="lazy" />
+              <figcaption>Zonas de supply y demand con order blocks en XAU/USD.</figcaption>
+            </figure>
+            <figure class="chart-figure">
+              <img src="charts/08_fvg_orderblock.png" alt="Fair Value Gap y Order Block en XAU/USD" loading="lazy" />
+              <figcaption>Fair Value Gap (FVG) y Order Block (OB) en XAU/USD.</figcaption>
+            </figure>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 10. ESTRATEGIA 7: London Breakout ============ -->
+    <section id="estrategia-7" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">10 — Estrategia 7</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">London Breakout</h2>
+            <span class="wr-badge wr-medium wr-badge-lg">Win Rate 48–68%</span>
+          </div>
+          <p class="section-intro">
+            El London Breakout aprovecha el aumento de volatilidad cuando abre la sesión de Londres.
+            El rango asiático define los niveles; el breakout de Londres genera el movimiento.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto</h3>
+            <p>Durante la sesión asiática (00:00–07:00 UTC), el oro suele moverse en un rango lateral
+            estrecho de 30–60 pips. Cuando abre Londres (07:00 UTC), el aumento de volumen y liquidez
+            provoca un breakout de ese rango. La estrategia consiste en capturar ese movimiento direccional.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Rango Asiático</h3>
+            <ul class="bullet-list">
+              <li>Definir el rango asiático entre 00:00 y 06:00 UTC (ajustar según broker/horario de verano).</li>
+              <li>Marcar el máximo y mínimo del rango (Asian High y Asian Low).</li>
+              <li>El rango ideal es estrecho (30–60 pips). Rangos muy amplios = menor fiabilidad.</li>
+              <li>El precio no debe haber roto el rango durante toda la sesión asiática.</li>
+            </ul>
+          </div>
+
+          <div class="strategy-block strategy-block-highlight">
+            <h3 class="block-title">Reglas Paso a Paso</h3>
+            <ol class="rules-list rules-list-detailed">
+              <li><strong>Marcar el rango asiático:</strong> máximo y mínimo entre 00:00 y 06:00 UTC.</li>
+              <li><strong>Esperar apertura de Londres:</strong> a partir de las 07:00 UTC.</li>
+              <li><strong>Breakout al alza:</strong> el precio rompe el Asian High con vela M15 decisiva → preparar compra.</li>
+              <li><strong>Breakout a la baja:</strong> el precio rompe el Asian Low con vela M15 decisiva → preparar venta.</li>
+              <li><strong>Confirmar:</strong> la vela M15 debe cerrar fuera del rango (no solo mechar).</li>
+              <li><strong>Filtro temporal:</strong> operar solo breakouts entre 07:00 y 10:00 UTC. Después de las 10:00, menor fiabilidad.</li>
+              <li><strong>Entrar:</strong> en la apertura de la siguiente vela tras el cierre de breakout.</li>
+              <li><strong>Stop loss:</strong> en el lado opuesto del rango asiático o en el punto medio del rango.</li>
+              <li><strong>Take profit:</strong> ratio 1:2, o el tamaño del rango asiático proyectado desde el breakout.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Variantes y Filtros</h3>
+            <ul class="bullet-list">
+              <li><strong>Falso breakout:</strong> si el precio rompe y regresa en 15 min, es falso. Esperar re-breakout.</li>
+              <li><strong>Confirmación con DXY:</strong> si el DXY rompe en dirección opuesta, el oro tiene mayor probabilidad.</li>
+              <li><strong>Día de noticias:</strong> evitar operar en días de NFP o FOMC (la volatilidad es impredecible).</li>
+              <li><strong>Objetivo medido:</strong> proyectar la altura del rango asiático desde el punto de breakout.</li>
+            </ul>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/07_london_breakout.png" alt="London Breakout en XAU/USD" loading="lazy" />
+            <figcaption>London Breakout: rango asiático y breakout direccional tras apertura de Londres.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 11. ESTRATEGIA 8: Volume Profile ============ -->
+    <section id="estrategia-8" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">11 — Estrategia 8</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">Volume Profile</h2>
+            <span class="wr-badge wr-medium wr-badge-lg">Win Rate 47–67%</span>
+          </div>
+          <p class="section-intro">
+            El Volume Profile muestra dónde se ha concentrado el volumen de negociación por nivel de
+            precio, no por tiempo. Permite identificar zonas de aceptación y rechazo del precio.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto</h3>
+            <p>A diferencia del volumen tradicional (que se muestra en el eje temporal), el Volume Profile
+            muestra el volumen en el eje de precios. Esto revela qué niveles de precio han sido aceptados
+            (alto volumen) y cuáles rechazados (bajo volumen). Es una herramienta institucional.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Conceptos Clave</h3>
+            <div class="card-grid card-grid-3">
+              <article class="info-card">
+                <h4 class="info-card-title">POC — Point of Control</h4>
+                <p class="info-card-text">El nivel de precio con mayor volumen del perfil. Es el punto de equilibrio del mercado. El precio tiende a regresar al POC.</p>
+              </article>
+              <article class="info-card">
+                <h4 class="info-card-title">VAH — Value Area High</h4>
+                <p class="info-card-text">Límite superior del Value Area (zona donde se concentra el 70% del volumen). Resistencia natural cuando el precio está por debajo.</p>
+              </article>
+              <article class="info-card">
+                <h4 class="info-card-title">VAL — Value Area Low</h4>
+                <p class="info-card-text">Límite inferior del Value Area. Soporte natural cuando el precio está por encima. Junto con VAH define la zona de valor.</p>
+              </article>
+            </div>
+          </div>
+
+          <div class="strategy-block strategy-block-highlight">
+            <h3 class="block-title">Estrategia: Value Area Reclaim</h3>
+            <ol class="rules-list rules-list-detailed">
+              <li><strong>Identificar el perfil de volumen:</strong> usar perfil diario o de sesión de la sesión anterior.</li>
+              <li><strong>Marcar POC, VAH y VAL</strong> del perfil de referencia.</li>
+              <li><strong>Esperar salida del Value Area:</strong> el precio rompe VAH o VAL y opera fuera del área de valor.</li>
+              <li><strong>Esperar reclaim:</strong> el precio regresa dentro del Value Area (reentra por VAH o VAL).</li>
+              <li><strong>Confirmar:</strong> vela de rechazo al regresar al Value Area, o sostenimiento dentro del área.</li>
+              <li><strong>Entrar:</strong> en dirección hacia el extremo opuesto del Value Area (POC como objetivo intermedio).</li>
+              <li><strong>Stop loss:</strong> fuera del Value Area, 5–10 pips más allá del extremo de reclaim.</li>
+              <li><strong>Take profit:</strong> POC primero, luego el extremo opuesto (VAL o VAH). Ratio 1:2 mínimo.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Zonas de Bajo Volumen (LVN)</h3>
+            <p>Las <strong>Low Volume Nodes (LVN)</strong> son zonas de precio con poco volumen. El precio
+            tiende a atravesarlas rápido (no hay interés allí). Las <strong>High Volume Nodes (HVN)</strong>
+            son zonas de alto volumen donde el precio se detiene. El oro se mueve rápidamente entre HVN
+            y se estanca en ellos. Operar desde POC hacia extremos es la base de esta estrategia.</p>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/10_volume_profile.png" alt="Volume Profile en XAU/USD con POC, VAH y VAL" loading="lazy" />
+            <figcaption>Volume Profile con POC, VAH, VAL y Value Area en XAU/USD.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 12. ESTRATEGIA 9: Breakout y Retest ============ -->
+    <section id="estrategia-9" class="section">
+      <article class="strategy-card">
+        <header class="strategy-header">
+          <span class="section-label">12 — Estrategia 9</span>
+          <div class="strategy-title-row">
+            <h2 class="section-title">Breakout y Retest</h2>
+            <span class="wr-badge wr-medium wr-badge-lg">Win Rate 45–65%</span>
+          </div>
+          <p class="section-intro">
+            Una de las estrategias más clásicas y fiables. Cuando una resistencia se rompe, se convierte
+            en soporte (y viceversa). Entrar en el retest aprovecha esta conversión de roles.
+          </p>
+        </header>
+
+        <div class="strategy-body">
+          <div class="strategy-block">
+            <h3 class="block-title">Concepto: La Resistencia se Convierte en Soporte</h3>
+            <p>Cuando el precio rompe una resistencia al alza, los compradores que estaban esperando una
+            corrección para entrar colocan órdenes de compra en ese nivel. La resistencia rota se convierte
+            en soporte. Lo inverso ocurre cuando se rompe un soporte: se convierte en resistencia.</p>
+            <p>Esta conversión de roles es uno de los principios más sólidos del análisis técnico. No todos
+            los breakouts generan retest, pero cuando lo hacen, la probabilidad de éxito aumenta significativamente.</p>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Reglas de Entrada</h3>
+            <ol class="rules-list">
+              <li>Identificar un nivel de resistencia (o soporte) significativo en H1 o H4.</li>
+              <li>El precio rompe el nivel con una vela de impulso (cuerpo mayoritario fuera del nivel).</li>
+              <li>Esperar a que el precio retroceda al nivel roto.</li>
+              <li>Confirmar el retest con vela de rechazo: pin bar, martillo, envolvente en el nivel.</li>
+              <li>Entrar en la dirección del breakout original.</li>
+              <li>Stop loss: 5–10 pips por debajo/encima del nivel de retest.</li>
+              <li>Take profit: siguiente nivel de resistencia/soporte o ratio 1:2 a 1:3.</li>
+            </ol>
+          </div>
+
+          <div class="strategy-block">
+            <h3 class="block-title">Filtros y Mejoras</h3>
+            <ul class="bullet-list">
+              <li><strong>Volumen en el breakout:</strong> mayor volumen al romper = mayor fiabilidad del retest.</li>
+              <li><strong>Resistencia múltiple:</strong> si el nivel era resistencia en múltiples ocasiones, el retest es más fiable.</li>
+              <li><strong>Timeframe de tendencia:</strong> operar retests a favor de la tendencia en H4/D1 aumenta la probabilidad.</li>
+              <li><strong>Evitar retests tardíos:</strong> si el precio se aleja más del doble del rango del nivel antes de regresar, el momentum puede haberse agotado.</li>
+              <li><strong>Breakout + OB:</strong> si el nivel roto coincide con un order block, la entrada es aún más fuerte.</li>
+            </ul>
+          </div>
+
+          <figure class="chart-figure">
+            <img src="charts/09_breakout_pullback.png" alt="Breakout y retest en XAU/USD" loading="lazy" />
+            <figcaption>Breakout de resistencia y retest con entrada en XAU/USD. La resistencia se convierte en soporte.</figcaption>
+          </figure>
+        </div>
+      </article>
+    </section>
+
+    <!-- ============ 13. CHECKLIST ============ -->
+    <section id="checklist" class="section">
+      <header class="section-header">
+        <span class="section-label">13 — Checklist Operativo</span>
+        <h2 class="section-title">Lista de Verificación Pre-Trade</h2>
+        <p class="section-intro">
+          Antes de abrir cualquier operación, verifica cada punto. Si fallas en uno, no operes.
+          La disciplina en el checklist es lo que separa al trader profesional del aficionado.
+        </p>
+      </header>
+
+      <div class="checklist-grid">
+        <article class="checklist-card">
+          <h3 class="checklist-title">1. Análisis de Mercado</h3>
+          <ul class="checklist-list">
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Tendencia H4/D1 identificada</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Niveles de S/R marcados</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Sesión actual identificada</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> DXY revisado</label></li>
+          </ul>
+        </article>
+        <article class="checklist-card">
+          <h3 class="checklist-title">2. Configuración</h3>
+          <ul class="checklist-list">
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Setup de estrategia claro</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Confirmación de vela presente</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Punto de entrada definido</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> A favor de la tendencia mayor</label></li>
+          </ul>
+        </article>
+        <article class="checklist-card">
+          <h3 class="checklist-title">3. Gestión de Riesgo</h3>
+          <ul class="checklist-list">
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Riesgo máximo 1–2% del capital</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Stop loss colocado</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> R:R mínimo 1:2</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Tamaño de lote calculado</label></li>
+          </ul>
+        </article>
+        <article class="checklist-card">
+          <h3 class="checklist-title">4. Entorno</h3>
+          <ul class="checklist-list">
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> No hay noticias en 30 min</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Día de NFP revisado</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Sesión de alta liquidez</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Correlación DXY verificada</label></li>
+          </ul>
+        </article>
+        <article class="checklist-card">
+          <h3 class="checklist-title">5. Estado Mental</h3>
+          <ul class="checklist-list">
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> No estoy en racha de pérdidas (&lt;2)</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> No estoy operando por emoción</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> He dormido adecuadamente</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Estoy tranquilo y enfocado</label></li>
+          </ul>
+        </article>
+        <article class="checklist-card">
+          <h3 class="checklist-title">6. Ejecución</h3>
+          <ul class="checklist-list">
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Orden colocada correctamente</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Stop loss en la plataforma</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Take profit definido</label></li>
+            <li><label class="checkbox"><input type="checkbox" /><span class="checkmark"></span> Trade registrado en journal</label></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============ 14. ERRORES ============ -->
+    <section id="errores" class="section">
+      <header class="section-header">
+        <span class="section-label">14 — Errores Comunes</span>
+        <h2 class="section-title">Top 10 Errores del Trader de Oro</h2>
+        <p class="section-intro">
+          Estos son los errores que más capital destruyen. Reconócelos y evítalos sistemáticamente.
+        </p>
+      </header>
+
+      <div class="errors-grid">
+        <article class="error-card"><span class="error-num">01</span><div><h3 class="error-title">No usar Stop Loss</h3><p>El error más mortal. Operar sin stop loss es como saltar sin paracaídas. Una sola operación puede destruir tu cuenta en oro.</p></div></article>
+        <article class="error-card"><span class="error-num">02</span><div><h3 class="error-title">Mover el Stop Loss</h3><p>Ampliar el stop para "darle aire" es racionalizar una mala decisión. El stop original fue calculado por una razón. Respétalo.</p></div></article>
+        <article class="error-card"><span class="error-num">03</span><div><h3 class="error-title">Sobreapalancamiento</h3><p>Usar lotes demasiado grandes para tu capital. En oro, la volatilidad amplifica el apalancamiento. Un movimiento de 50 pips puede liquidarte.</p></div></article>
+        <article class="error-card"><span class="error-num">04</span><div><h3 class="error-title">Operar Noticias Sin Estrategia</h3><p>Entrar justo antes de NFP/CPI/FOMC sin plan es juego de azar. El spread se ensancha, el slippage devora y la dirección es impredecible.</p></div></article>
+        <article class="error-card"><span class="error-num">05</span><div><h3 class="error-title">Revenge Trading</h3><p>Después de una pérdida, intentar recuperarla inmediatamente con una operación mayor o sin setup. Es el camino más rápido a la ruina.</p></div></article>
+        <article class="error-card"><span class="error-num">06</span><div><h3 class="error-title">Ignorar la Tendencia Mayor</h3><p>Operar contra la tendencia de H4/D1 para capturar un movimiento de M15. Nadar contra corriente es agotador y costoso.</p></div></article>
+        <article class="error-card"><span class="error-num">07</span><div><h3 class="error-title">No Llevar Journal</h3><p>Operar sin registrar. Sin datos no hay mejora. No puedes corregir lo que no mides. El journal es tu mejor profesor.</p></div></article>
+        <article class="error-card"><span class="error-num">08</span><div><h3 class="error-title">Demasiadas Operaciones</h3><p>Overtrading. Cada operación tiene coste (spread, comisión, riesgo). Más operaciones no significa más dinero, suele significar más pérdidas.</p></div></article>
+        <article class="error-card"><span class="error-num">09</span><div><h3 class="error-title">No Respetar el Plan</h3><p>Desviarse del plan en el calor del momento. Si tu plan dice entrar con confirmación y entras sin ella, has roto tu propia regla.</p></div></article>
+        <article class="error-card"><span class="error-num">10</span><div><h3 class="error-title">Olvidar el DXY</h3><p>Operar oro sin mirar el dólar es como conducir con un ojo cerrado. La correlación inversa del DXY es tu brújula estructural.</p></div></article>
+      </div>
+    </section>
+
+    <!-- ============ 15. PRÁCTICA ============ -->
+    <section id="practica" class="section">
+      <header class="section-header">
+        <span class="section-label">15 — Plan de Práctica</span>
+        <h2 class="section-title">Cómo Convertirse en un Trader Rentable</h2>
+        <p class="section-intro">
+          La teoría sin práctica es inútil. El trading es una habilidad que se desarrolla con
+          repetición deliberada, backtesting sistemático y registro meticuloso.
+        </p>
+      </header>
+
+      <div class="card-grid card-grid-3">
+        <article class="info-card">
+          <h3 class="info-card-title">Fase 1: Estudio</h3>
+          <p class="info-card-text">Lee y comprende cada estrategia. Identifica cuál se adapta a tu personalidad y horario. No operes todavía. Estudia los gráficos de este manual hasta identificar los patrones con facilidad.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Fase 2: Backtesting</h3>
+          <p class="info-card-text">Retrocede 6–12 meses en los gráficos. Aplica la estrategia elegida operación por operación. Registra cada trade. Necesitas mínimo 100 operaciones de backtest para tener datos estadísticamente significativos.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Fase 3: Demo</h3>
+          <p class="info-card-text">Opera en cuenta demo durante 1–3 meses. Tu objetivo no es ganar dinero, sino demostrar que puedes seguir el plan con disciplina. Si eres rentable en demo, pasa a real con lotes mínimos.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Fase 4: Micro-Cuenta</h3>
+          <p class="info-card-text">Opera con dinero real pero lotes mínimos (0.01). La emoción del dinero real cambia todo. Aquí validas tu psicología. Período: 2–3 meses con resultados consistentes.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Fase 5: Escalado</h3>
+          <p class="info-card-text">Aumenta gradualmente el tamaño de lote solo si tu win rate y R:R lo justifican. Nunca dobles el tamaño tras una pérdida. Escala tras semanas de consistencia, no tras una operación ganadora.</p>
+        </article>
+        <article class="info-card">
+          <h3 class="info-card-title">Fase 6: Revisión</h3>
+          <p class="info-card-text">Cada semana, revisa tu journal. Identifica patrones: ¿qué setups ganan más? ¿qué horario es tu mejor? ¿qué errores se repiten? La revisión semanal es donde realmente mejoras.</p>
+        </article>
+      </div>
+
+      <h3 class="subsection-title">Importancia del Backtesting</h3>
+      <div class="callout">
+        El backtesting no es opcional. Es la diferencia entre apostar y operar. Sin backtesting, no
+        conoces el win rate real de tu estrategia, no sabes qué timeframes funcionan mejor, y no
+        tienes confianza estadística. Realiza mínimo 100 backtests por estrategia antes de operar en vivo.
+        El backtesting construye la confianza que necesitas para mantener la disciplina en tiempo real.
+      </div>
+
+      <h3 class="subsection-title">Trading Journal — Campos Recomendados</h3>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr><th>Campo</th><th>Descripción</th><th>Ejemplo</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Fecha/Hora</td><td>Cuando se abrió la operación</td><td>2025-07-29 13:15 UTC</td></tr>
+            <tr><td>Estrategia</td><td>Cuál estrategia se aplicó</td><td>CRT</td></tr>
+            <tr><td>Dirección</td><td>Compra o venta</td><td>Compra</td></tr>
+            <tr><td>Timeframe</td><td>Timeframe principal</td><td>M15</td></tr>
+            <tr><td>Precio Entrada</td><td>Nivel de entrada</td><td>$2,050.00</td></tr>
+            <tr><td>Stop Loss</td><td>Nivel de SL</td><td>$2,045.00</td></tr>
+            <tr><td>Take Profit</td><td>Nivel de TP</td><td>$2,060.00</td></tr>
+            <tr><td>R:R</td><td>Ratio riesgo-beneficio</td><td>1:2</td></tr>
+            <tr><td>Tamaño Lote</td><td>Lotes operados</td><td>0.10</td></tr>
+            <tr><td>Riesgo ($)</td><td>Dólares arriesgados</td><td>$50</td></tr>
+            <tr><td>Resultado</td><td>Ganancia/Pérdida en R</td><td>+2R</td></tr>
+            <tr><td>Sesión</td><td>Sesión de trading</td><td>London/NY overlap</td></tr>
+            <tr><td>Notas</td><td>Contexto, emociones, observaciones</td><td>Sweep CRL claro, MSS confirmado</td></tr>
+            <tr><td>Captura</td><td>Screenshot del gráfico</td><td>trade_001.png</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ============ 16. FUENTES ============ -->
+    <section id="fuentes" class="section">
+      <header class="section-header">
+        <span class="section-label">16 — Fuentes y Metodología</span>
+        <h2 class="section-title">Referencias</h2>
+        <p class="section-intro">
+          Este manual compila conceptos de price action, análisis técnico clásico y metodologías
+          de trading institucional (ICT). Los win rates son estimaciones basadas en experiencia
+          profesional y datos históricos, no garantías de rendimiento futuro.
+        </p>
+      </header>
+
+      <h3 class="subsection-title">Metodología</h3>
+      <div class="callout">
+        Los win rates presentados son rangos estimados basados en backtesting profesional y
+        experiencia operativa en XAU/USD. Los rangos reflejan la variabilidad según: nivel de
+        experiencia del trader, condiciones de mercado (tendencia vs rango), adherencia estricta
+        a las reglas de entrada, y calidad de las confirmaciones utilizadas. Un trader experimentado
+        operará en el rango superior; un principiante, en el inferior. El trading conlleva riesgo
+        de pérdida de capital. Este manual es exclusivamente educativo.
+      </div>
+
+      <h3 class="subsection-title">Fuentes y Referencias</h3>
+      <ul class="sources-list">
+        <li><a href="https://www.investopedia.com/terms/s/support.asp" target="_blank" rel="noopener">Investopedia — Support and Resistance</a> — Conceptos fundamentales de soporte y resistencia.</li>
+        <li><a href="https://www.investopedia.com/terms/e/ema.asp" target="_blank" rel="noopener">Investopedia — Exponential Moving Average (EMA)</a> — Definición y uso de medias exponenciales.</li>
+        <li><a href="https://www.investopedia.com/terms/r/rsi.asp" target="_blank" rel="noopener">Investopedia — Relative Strength Index (RSI)</a> — Oscilador RSI y divergencias.</li>
+        <li><a href="https://www.theictmentorship.com/" target="_blank" rel="noopener">ICT Mentorship</a> — Inner Circle Trader: conceptos de CRT, PO3, Order Blocks, FVG, CHoCH y BOS.</li>
+        <li><a href="https://www.tradingview.com/support/solutions/43000502046-volume-profile/" target="_blank" rel="noopener">TradingView — Volume Profile</a> — Documentación sobre POC, VAH, VAL y Value Area.</li>
+        <li><a href="https://www.investopedia.com/terms/d/dxy.asp" target="_blank" rel="noopener">Investopedia — U.S. Dollar Index (DXY)</a> — Correlación inversa oro-dólar.</li>
+        <li><a href="https://www.cmegroup.com/markets/metals/precious/gold.html" target="_blank" rel="noopener">CME Group — Gold Futures</a> — Datos de mercado y especificaciones de contratos de oro.</li>
+        <li><a href="https://www.gold.org/goldhub" target="_blank" rel="noopener">World Gold Council — GoldHub</a> — Datos fundamentales del mercado del oro.</li>
+        <li><a href="https://www.bis.org/" target="_blank" rel="noopener">Bank for International Settlements</a> — Datos macroeconómicos y de reservas de oro.</li>
+        <li><a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener">Federal Reserve — FOMC Calendar</a> — Calendario de decisiones de política monetaria.</li>
+        <li><a href="https://www.bls.gov/schedule/news_release/empsit.htm" target="_blank" rel="noopener">U.S. Bureau of Labor Statistics — NFP Schedule</a> — Calendario de Non-Farm Payrolls.</li>
+        <li><a href="https://www.tradingview.com/chart/" target="_blank" rel="noopener">TradingView</a> — Plataforma de gráficos utilizada para el análisis técnico.</li>
+      </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <svg class="logo-icon" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+            <rect x="6" y="3" width="20" height="26" rx="2.5" stroke="currentColor" stroke-width="2"/>
+            <rect x="9" y="7" width="14" height="18" rx="1" fill="currentColor" opacity="0.15"/>
+            <path d="M13 14v8M16 11v11M19 14v8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="footer-brand-text">Manual de Trading de Oro</span>
+        </div>
+        <p class="footer-disclaimer">
+          <strong>Aviso de Riesgo:</strong> El trading de oro (XAU/USD) y productos apalancados
+          conlleva un alto riesgo de pérdida. Este manual es exclusivamente educativo y no constituye
+          asesoramiento financiero, recomendación de inversión ni invitación a operar. Los win rates
+          son estimaciones basadas en datos históricos y no garantizan resultados futuros. Opera solo
+          con capital que puedas permitirte perder. Consulta a un asesor financiero profesional antes
+          de tomar decisiones de inversión.
+        </p>
+        <p class="footer-updated">Última actualización: Julio 2026 · El contenido refleja las estrategias vigentes a la fecha de publicación.</p>
+      </div>
+    </footer>
+  </main>
+
+  <!-- Back to top -->
+  <button class="back-to-top" id="backToTop" aria-label="Volver arriba">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+  </button>
+
+  <script src="app.js"></script>
+<script type="text/plain" data-pplx-inline-edit>
+(function () {
+  if (window === window.top) return;
+
+  const allowedParentOrigins = ["https://www.perplexity.ai","https://perplexity.ai","https://testing.perplexity.ai","https://staging.perplexity.ai","https://*.preview.i.perplexity.ai","http://perplexity.localhost","http://localhost:1420","http://127.0.0.1:1420","http://localhost:3000","http://127.0.0.1:3000","http://localhost:5173","http://127.0.0.1:5173"];
+  const MAX_FONT_BYTES = 500 * 1024;
+  const MAX_TOTAL_FONT_BYTES = 2 * 1024 * 1024;
+  let scrollForwarding = false;
+  let scrollRaf = 0;
+  let trustedTopOrigin = null;
+
+  // Allow entries like "https://*.preview.i.perplexity.ai" — the wildcard
+  // matches a single DNS label (no dots), so "https://*.foo" cannot stretch
+  // across multiple labels.
+  function matchesAllowedOrigin(origin) {
+    if (!origin) return false;
+    for (const entry of allowedParentOrigins) {
+      if (!entry.includes("*")) {
+        if (entry === origin) return true;
+        continue;
+      }
+      const pattern = new RegExp(
+        "^" +
+          entry.replace(/[.+?^${}()|[\]\\]/g, "\\$&").replace(/\*/g, "[^.]+") +
+          "$",
+      );
+      if (pattern.test(origin)) return true;
+    }
+    return false;
+  }
+
+  // Trust decision: when the sender is same-origin-visible (event.origin is a
+  // real origin like https://www.perplexity.ai) we trust event.origin directly.
+  // When event.origin is "null" (opaque broker srcdoc), we fall back to the
+  // broker's stamped `parentOrigin` to identify the top window. The fallback
+  // is claim-only — we rely on the browser's native `targetOrigin` enforcement
+  // on the response path (see postToTrustedTop) to ensure replies can't be
+  // delivered to anyone but the actual top window of that claimed origin.
+  function getTrustedParentOrigin(event) {
+    const forwardedParentOrigin =
+      typeof event.data.parentOrigin === "string" ? event.data.parentOrigin : null;
+    const parentOrigin = event.origin === "null" ? forwardedParentOrigin : event.origin;
+    return matchesAllowedOrigin(parentOrigin) ? parentOrigin : null;
+  }
+
+  // All responses go to window.top with targetOrigin = the allowlisted origin.
+  // An attacker that iframes us inside their own null-origin broker can claim
+  // any parentOrigin they like, but the browser will drop the reply whenever
+  // the real top's origin doesn't match — so the screenshot never leaves.
+  function postToTrustedTop(message) {
+    if (!trustedTopOrigin) return;
+    try {
+      window.top.postMessage(message, trustedTopOrigin);
+    } catch (_error) {}
+  }
+
+  function inlineAll(original, clone) {
+    if (original.nodeType !== 1 || clone.nodeType !== 1) return;
+
+    try {
+      const computedStyle = getComputedStyle(original);
+      // cssText on a computed style is the serialized declaration in modern
+      // Chromium/Safari — a single read beats enumerating ~400 longhand
+      // properties. Firefox returns "" here, so we fall back on empty.
+      const serialized = computedStyle.cssText;
+      if (serialized) {
+        clone.style.cssText = serialized;
+      } else {
+        const parts = new Array(computedStyle.length);
+        for (let index = 0; index < computedStyle.length; index += 1) {
+          const property = computedStyle[index];
+          parts[index] = `${property}:${computedStyle.getPropertyValue(property)};`;
+        }
+        clone.style.cssText = parts.join("");
+      }
+    } catch (_error) {}
+
+    const originalChildren = original.children;
+    const clonedChildren = clone.children;
+    for (
+      let index = 0;
+      index < originalChildren.length && index < clonedChildren.length;
+      index += 1
+    ) {
+      inlineAll(originalChildren[index], clonedChildren[index]);
+    }
+  }
+
+  function extractFontUrl(srcValue) {
+    const matches = [
+      ...srcValue.matchAll(
+        /url\(["']?([^"')]+)["']?\)(?:\s*format\(["']?([^"')]+)["']?\))?/gi,
+      ),
+    ];
+    if (matches.length === 0) return null;
+    const woff2 = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff2"));
+    if (woff2) return woff2[1];
+    const woff = matches.find((m) => m[2] && m[2].toLowerCase().includes("woff"));
+    if (woff) return woff[1];
+    return matches[0][1];
+  }
+
+  // Cache resolved font URL -> data URI across captures. Fonts on a page
+  // essentially never change, and a batch run emits multiple captures back to
+  // back — without this we'd refetch + re-base64 every time.
+  const fontDataUriCache = new Map();
+  const SRC_DECLARATION_RE = /src\s*:\s*[^;}]+/i;
+
+  async function fetchAsDataUri(url) {
+    if (fontDataUriCache.has(url)) return fontDataUriCache.get(url);
+    let dataUri = null;
+    try {
+      const response = await fetch(url, { mode: "cors", credentials: "omit" });
+      if (response.ok) {
+        const blob = await response.blob();
+        if (blob.size <= MAX_FONT_BYTES) {
+          dataUri = await new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () =>
+              resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(blob);
+          });
+        }
+      }
+    } catch (_error) {
+      dataUri = null;
+    }
+    fontDataUriCache.set(url, dataUri);
+    return dataUri;
+  }
+
+  function collectFontFaceRuleTexts() {
+    const rules = [];
+    for (const sheet of document.styleSheets) {
+      let cssRules;
+      try {
+        cssRules = sheet.cssRules;
+      } catch (_error) {
+        continue;
+      }
+      if (!cssRules) continue;
+      for (const rule of cssRules) {
+        const cssText = rule.cssText || "";
+        if (cssText.startsWith("@font-face")) rules.push(cssText);
+      }
+    }
+    return rules;
+  }
+
+  async function buildInlinedFontCss() {
+    const ruleTexts = collectFontFaceRuleTexts();
+    if (ruleTexts.length === 0) return null;
+
+    const resolved = ruleTexts.map((cssText) => {
+      if (!SRC_DECLARATION_RE.test(cssText)) return null;
+      const srcMatch = cssText.match(/src\s*:\s*([^;}]+)[;}]/i);
+      if (!srcMatch) return null;
+      const url = extractFontUrl(srcMatch[1]);
+      if (!url) return null;
+      try {
+        return { cssText, url: new URL(url, document.baseURI).href };
+      } catch (_error) {
+        return null;
+      }
+    });
+
+    const dataUris = await Promise.all(
+      resolved.map((entry) => (entry ? fetchAsDataUri(entry.url) : Promise.resolve(null))),
+    );
+
+    const inlined = [];
+    let totalBytes = 0;
+    for (let index = 0; index < resolved.length; index += 1) {
+      const entry = resolved[index];
+      const dataUri = dataUris[index];
+      if (!entry || !dataUri) continue;
+      const approxBytes = dataUri.length * 0.75;
+      if (totalBytes + approxBytes > MAX_TOTAL_FONT_BYTES) break;
+      totalBytes += approxBytes;
+      inlined.push(entry.cssText.replace(SRC_DECLARATION_RE, `src: url("${dataUri}")`));
+    }
+    return inlined.length > 0 ? inlined.join("\n") : null;
+  }
+
+  function stripExternal(clone) {
+    const images = clone.querySelectorAll("img");
+    for (let index = 0; index < images.length; index += 1) {
+      const src = images[index].getAttribute("src");
+      if (src && !src.startsWith("data:")) images[index].removeAttribute("src");
+    }
+
+    const elements = clone.querySelectorAll("*");
+    for (let index = 0; index < elements.length; index += 1) {
+      const style = elements[index].style.cssText;
+      if (style && style.includes("url(")) {
+        elements[index].style.cssText = style.replace(
+          /url\(["']?(?!data:)[^)"']*["']?\)/gi,
+          "none",
+        );
+      }
+    }
+  }
+
+  function emitScroll() {
+    scrollRaf = 0;
+    if (!scrollForwarding) return;
+    postToTrustedTop({
+      type: "INLINE_EDIT_SCROLL",
+      scrollX: window.scrollX,
+      scrollY: window.scrollY,
+    });
+  }
+
+  window.addEventListener(
+    "scroll",
+    function () {
+      if (!scrollForwarding || scrollRaf) return;
+      scrollRaf = requestAnimationFrame(emitScroll);
+    },
+    { passive: true, capture: true },
+  );
+
+  async function handleCaptureRequest(event) {
+    const requestId = event.data.requestId;
+    const scrollX = window.scrollX;
+    const scrollY = window.scrollY;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+
+    function postResult(dataUrl) {
+      postToTrustedTop({
+        type: "INLINE_EDIT_SCREENSHOT_RESULT",
+        requestId,
+        dataUrl,
+        scrollX,
+        scrollY,
+      });
+    }
+
+    try {
+      // Wait for any pending web fonts to resolve so both inline metrics and
+      // the @font-face inlining below see the same loaded faces.
+      if (document.fonts && document.fonts.ready) {
+        try {
+          await document.fonts.ready;
+        } catch (_error) {}
+      }
+
+      const clone = document.documentElement.cloneNode(true);
+      inlineAll(document.documentElement, clone);
+
+      const removedNodes = clone.querySelectorAll("script,link[rel=\"stylesheet\"],style");
+      for (let index = 0; index < removedNodes.length; index += 1) {
+        removedNodes[index].remove();
+      }
+
+      stripExternal(clone);
+
+      // Re-embed web fonts as data-URI @font-face rules so the SVG rasterizer
+      // can resolve them — external font URLs aren't fetched during
+      // foreignObject rendering, which would otherwise force a fallback face
+      // and change text metrics.
+      const inlinedFontCss = await buildInlinedFontCss();
+      if (inlinedFontCss) {
+        const styleEl = document.createElement("style");
+        styleEl.textContent = inlinedFontCss;
+        const head = clone.querySelector("head");
+        if (head) head.appendChild(styleEl);
+        else clone.insertBefore(styleEl, clone.firstChild);
+      }
+
+      const html = new XMLSerializer().serializeToString(clone);
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">` +
+        '<foreignObject width="100%" height="100%">' +
+        `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;height:${height}px;overflow:hidden">` +
+        `<div style="position:relative;left:-${scrollX}px;top:-${scrollY}px">` +
+        html +
+        "</div></div></foreignObject></svg>";
+      const svgUrl = `data:image/svg+xml;charset=utf-8,${encodeURIComponent(svg)}`;
+      const image = new Image();
+      image.onload = function () {
+        const canvas = document.createElement("canvas");
+        canvas.width = width;
+        canvas.height = height;
+        canvas.getContext("2d").drawImage(image, 0, 0);
+        postResult(canvas.toDataURL("image/png"));
+      };
+      image.onerror = function () {
+        postResult(null);
+      };
+      image.src = svgUrl;
+    } catch (_error) {
+      postResult(null);
+    }
+  }
+
+  window.addEventListener("message", function (event) {
+    if (!event.data) return;
+    // Only accept messages from the direct parent frame. Blocks sibling /
+    // unrelated-window postMessage senders that could otherwise reach us.
+    if (event.source !== window.parent) return;
+
+    const trustedParentOrigin = getTrustedParentOrigin(event);
+    if (!trustedParentOrigin) return;
+    trustedTopOrigin = trustedParentOrigin;
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_START") {
+      scrollForwarding = true;
+      emitScroll();
+      return;
+    }
+
+    if (event.data.type === "INLINE_EDIT_SCROLL_STOP") {
+      scrollForwarding = false;
+      if (scrollRaf) cancelAnimationFrame(scrollRaf);
+      scrollRaf = 0;
+      return;
+    }
+
+    if (event.data.type !== "INLINE_EDIT_CAPTURE_REQUEST") return;
+
+    handleCaptureRequest(event);
+  });
+})();
+
+
+</script></body>
+</html>
